@@ -1,4 +1,4 @@
-# mod key
+1# mod key
 set $mod Mod4
 
 # is used in the bar {} block below.
@@ -12,13 +12,13 @@ font pango:DejaVu Sans Mono 8
 floating_modifier+$mod
 
 # start a terminal
-bindsym $mod+Return exec mate-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
 
 # change focus
 bindsym $mod+j focus left
@@ -76,32 +76,36 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # workspace names
-set $ws1 
-set $ws2  
-set $ws3 
-set $ws4 
-set $ws5 
-set $ws6 
+set $ws1 
+set $ws2 
+set $ws3 
+set $ws4 
+set $ws5 
+set $ws6 
+# set $ws7 
+# set $ws8 
+# set $ws9 
+# set $ws10 
 
 # switch to workspace
-bindsym $mod+1 workspace 1: $ws1
-bindsym $mod+2 workspace 2: $ws2
-bindsym $mod+3 workspace 3: $ws3
-bindsym $mod+4 workspace 4: $ws4
-bindsym $mod+5 workspace 5: $ws5
-bindsym $mod+6 workspace 6: $ws6
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1: $ws1
-bindsym $mod+Shift+2 move container to workspace 2: $ws2
-bindsym $mod+Shift+3 move container to workspace 3: $ws3
-bindsym $mod+Shift+4 move container to workspace 4: $ws4
-bindsym $mod+Shift+5 move container to workspace 5: $ws5
-bindsym $mod+Shift+6 move container to workspace 6: $ws6
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -135,20 +139,61 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# gaps            
+gaps inner 0
+gaps outer 0
+smart_borders on
+smart_gaps on
+new_window normal 
+#current plus 5
+
+# Color scheme:
+set $dark_base      #2E3440
+set $dark_accent    #757d8c
+set $light_accent   #0059ff 
+
+# Windows Colors:
+
+  # class                   border           backgr.           text        indicator         child_border
+  client.focused            #4c7899          $light_accent     #ffffff     $light_accent     $light_accent
+  client.focused_inactive   $dark_base       $dark_base        #ffffff     $dark_base        $dark_accent
+  client.unfocused          $dark_base       $dark_base        #888888     $dark_base        $dark_accent
+  client.urgent             #2f343a          $dark_base        #ffffff     $dark_accent      $light_accent
+  client.placeholder        #000000          $dark_base        #ffffff     #000000           $light_accent
+
+  client.background       $light_accent
+
+floating_minimum_size 100 x 100
+floating_maximum_size 1200 x 800
+
+for_window [class="^.*"] border pixel 
+
+for_window [class="feh"] floating enable 
+for_window [class="eog"] floating enable
+
+# Make menus and pop-ups floating
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-		font pango: noto mono 12 # mononoki Regular 9
-		status_command i3status #-c ~/etc/i3status.conf
+		font pango: mononoki Regular 11
+		i3bar_command i3bar -t
+		status_command i3status -c ~/.config/i3/i3status.conf
 		
 	colors {
-		background #000000
-        statusline #00A5FF #that neon blue
-        separator #666666
-        focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
+   	    	background #000000
+       		statusline #00A5FF # neon blue
+        	separator #4c7899
+        	focused_workspace  #000000 #000000 #00ff04
+        	active_workspace   #000000 #000000 #ffffff
+        	inactive_workspace #000000 #000000 #888888
+        	urgent_workspace   #2f343a #900000 #ffffff
 	}
 
 tray_output none
@@ -170,26 +215,27 @@ mode  $session {
 bindsym $mod+Shift+e mode $session
 
 # 51v4n's 
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wall
+exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/.wallpaper
 exec_always --no-startup-id compton -bc
+exec_always --no-startup-id gnome-power-manager
+#exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # monitor
 bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
 
 # lock screen
-bindsym Ctrl+Mod1+l exec --no-startup-id i3lock-wrapper
+bindsym Ctrl+Mod1+l exec --no-startup-id i3lock-fancy
 
-for_window [class="^Chromium$" title=" - Chromium$"] border none
-bindsym Mod4+c exec chromium
+#for_window [class="^Chromium$" title=" - Chromium$"] border none
+#bindsym Mod4+c exec chromium
 
-bindsym Mod4+t exec thunderbird
+#for_window [class="^Thunderbird$" title=" - Thunderbird$"] border none
+#bindsym Mod4+t exec thunderbird
 
 for_window [class="Nautilus"] floating enable, border pixel
-bindsym Mod4+n exec nautilus
 
 # scrot
-bindsym Print exec scrot -e 'mv $f /home/jesus/Pictures/screen-shots/$f'
-bindsym Mod1+Print exec scrot -s -e 'mv $f /home/jesus/Pictures/screen-shots/$f'
+bindsym Print exec gnome-screenshot
 
 # screen brightness
 bindsym Ctrl+Mod1+u exec light -U 10
