@@ -1,4 +1,4 @@
-1# mod key
+# mod key
 set $mod Mod4
 
 # is used in the bar {} block below.
@@ -70,20 +70,24 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Move focused workspace to monitor
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
 # media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # workspace names
-set $ws1 
-set $ws2 
-set $ws3 
-set $ws4 
-set $ws5 
-set $ws6 
-# set $ws7 
-# set $ws8 
+set $ws1 1: 
+set $ws2 2: 
+set $ws3 3: 
+set $ws4 4: 
+set $ws5 5: 
+set $ws6 6: 
+set $ws7 7:  
+set $ws8 8: 
 # set $ws9 
 # set $ws10 
 
@@ -94,8 +98,8 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
@@ -106,8 +110,8 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
@@ -140,12 +144,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # gaps            
-gaps inner 0
-gaps outer 0
+#gaps inner 10
+#gaps outer 5
 smart_borders on
 smart_gaps on
 new_window normal 
-#current plus 5
 
 # Color scheme:
 set $dark_base      #2E3440
@@ -166,7 +169,7 @@ set $light_accent   #0059ff
 floating_minimum_size 100 x 100
 floating_maximum_size 1200 x 800
 
-for_window [class="^.*"] border pixel 
+for_window [class="^.*"] border pixel 3
 
 for_window [class="feh"] floating enable 
 for_window [class="eog"] floating enable
@@ -182,18 +185,18 @@ for_window [window_type="menu"] floating enable
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-		font pango: mononoki Regular 11
+		font pango: mononoki regular 12
 		i3bar_command i3bar -t
 		status_command i3status -c ~/.config/i3/i3status.conf
 		
 	colors {
-   	    	background #000000
-       		statusline #00A5FF # neon blue
-        	separator #4c7899
-        	focused_workspace  #000000 #000000 #00ff04
-        	active_workspace   #000000 #000000 #ffffff
-        	inactive_workspace #000000 #000000 #888888
-        	urgent_workspace   #2f343a #900000 #ffffff
+   	    background #000000
+       	statusline #00A5FF # neon blue
+        #separator #4c7899
+        focused_workspace  #000000 #000000 #00A5FF 
+        active_workspace   #000000 #000000 #ffffff
+        inactive_workspace #000000 #000000 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
 	}
 
 tray_output none
@@ -216,26 +219,22 @@ bindsym $mod+Shift+e mode $session
 
 # 51v4n's 
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/.wallpaper
-exec_always --no-startup-id compton -bc
+exec_always --no-startup-id compton --config ~/.config/compton.conf -bc
 exec_always --no-startup-id gnome-power-manager
-#exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-# monitor
+# multi-monitor
 bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
 
 # lock screen
 bindsym Ctrl+Mod1+l exec --no-startup-id i3lock-fancy
 
-#for_window [class="^Chromium$" title=" - Chromium$"] border none
-#bindsym Mod4+c exec chromium
-
-#for_window [class="^Thunderbird$" title=" - Thunderbird$"] border none
-#bindsym Mod4+t exec thunderbird
-
+# floating windows
 for_window [class="Nautilus"] floating enable, border pixel
 
-# scrot
+# screen shot
 bindsym Print exec gnome-screenshot
+bindsym Mod4+Print exec gnome-screenshot -a
+bindsym Mod4+Shift+Print exec gnome-screenshot -w
 
 # screen brightness
 bindsym Ctrl+Mod1+u exec light -U 10
@@ -243,3 +242,6 @@ bindsym Ctrl+Mod1+a exec light -A 10
 
 # Mount disks
 bindsym $mod+m exec --no-startup-id udiskie -a
+
+# multi-monitor thing
+exec --no-startup-id display-visor -f -l
