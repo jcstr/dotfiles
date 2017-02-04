@@ -1,0 +1,7 @@
+# If id command returns zero, you have root access.
+if [ $(id -u) -eq 0 ];
+	then # you are root, set red colour prompt
+		export PS1="\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;12m\]@\[$(tput sgr0)\]\[\033[38;5;7m\]\h\[$(tput sgr0)\]\[\033[38;5;12m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;7m\]\w\[$(tput sgr0)\]\[\033[38;5;12m\]>\[$(tput sgr0)\]\[\033[38;5;9m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+	else # normal
+		PS1='\[\033[0;32m\]\A \[\033[0;31m\]\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[\033[0;34m\]@\[\033[0;35m\]\h\[\033[0;34m\]\[$(tput sgr0)\]\[\033[38;5;12m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]:\[\033[00;36m\]\W \[\033[0;33m\]▶\[\033[0m\] '
+fi
