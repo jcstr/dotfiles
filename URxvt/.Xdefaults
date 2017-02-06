@@ -1,0 +1,39 @@
+URxvt*loginShell:true
+URxvt*transparent:true
+URxvt*shading:5
+URxvt*background:Black
+URxvt*foreground:White
+URxvt*scrollBar:true
+URxvt*scrollBar_right:true
+URxvt*scrollBar_floating:false
+URxvt*scrollstyle:plain
+URxvt*secondaryScroll:true
+
+# how many lines you want it to save per session
+URxvt*saveLines:32767
+URxvt*troughColor:#000000
+URxvt*scrollColor:#222222
+URxvt*font: xft:Dejavu Sans Mono:pixelsize=11
+
+# with this set to true, when an app sends a bell to the terminal, awesome hilights the appropriate tag(s) ;)
+URxvt*urgentOnBell: true
+
+# these three lines enable clicking on links to open them ;)
+## if you want to enable tab support, append ,tabbed to the next line
+## then use shift+down arrow to create tabs and shift+{left,right} arrows to switch between them
+URxvt*perl-ext-common: default,matcher,-option-popup,-selection-popup,-realine
+URxvt*matcher.button: 1
+# don't forget to change this to your favorite browser
+URxvt*urlLauncher: chromium
+
+# FONTS
+URxvt.font:xft:mononoki:pixelsize=15
+URxvt.boldfont:xft:mononoki-Bold:pixelsize=15
+
+# Rendering
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
