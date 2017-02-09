@@ -1,18 +1,3 @@
-set nocompatible 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Plugins
-Plugin 'nathanaelkane/vim-indent-guides'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-
 "Update: 01/02/2017 23:21
 
 set encoding=utf-8
@@ -33,6 +18,7 @@ set tabstop=4
 set noet                                                            
 set shiftwidth=4
 set autoindent
+set si "Smart indent
 
 " Linebreak on 500 characters
 set lbr
@@ -41,3 +27,12 @@ set tw=500
 " color
 set background=dark
 colorscheme goldenrod
+
+" interface
+set wildmenu
+
+" status line
+set laststatus=2
+" format
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
