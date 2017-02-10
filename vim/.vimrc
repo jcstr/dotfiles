@@ -1,4 +1,4 @@
-"Update: 01/02/2017 23:21
+" Update: 10/02/2017 00:07
 
 set encoding=utf-8
 
@@ -28,11 +28,7 @@ set tw=500
 set background=dark
 colorscheme goldenrod
 
-" interface
-set wildmenu
-
-" status line
+" powerline
+set  rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
 set laststatus=2
-" format
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set t_Co=256
