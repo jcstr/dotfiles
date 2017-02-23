@@ -1,0 +1,32 @@
+[user]
+	name = Jesús Castro
+	email = 51v4n@openmailbox.org
+[color]
+	ui = always
+	branch = always
+	diff = always
+	interactive = always
+	status = always
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[core]
+	editor = vim
+	exludesfile =  ~/.gitignore
+[commit]
+	template = ~/.gitmessage.txt
+[web]
+	browser = chromium
+[rerere]
+	enabled = true
