@@ -34,3 +34,9 @@
 	insteadOf = "aur:"
 [url "ssh+git://aur4.archlinux.org"]
 	pushInsteadOf = "aur:"
+[sendmail]
+	confirm = auto
+	smtpencryption = tls
+	smtpserver = smtp.openmailbox.org
+	smtpuser = 51v4n@openmailbox.org
+	smtpserverport = 587
