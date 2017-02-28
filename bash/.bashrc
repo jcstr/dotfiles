@@ -16,7 +16,8 @@ export TERM=xterm-256color
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[0;32m\]\u\[\033[0;34m\]@\[\033[0;37m\]\h\[\033[0;34m\]\[$(tput sgr0)\]\[\033[38;5;12m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]: \[\033[00;36m\]\W\[\033[0;33m\] >\[\033[0m\]'
+
+PS1='\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[0;32m\]\u\[\033[0;34m\]@\[\033[0;37m\]\h\[\033[0;34m\]\[$(tput sgr0)\]\[\033[38;5;12m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]:\[\033[00;36m\] \W \[\033[0;33m\]>\[\033[0m\]'
 
 dbus-update-activation-environment --all
 
@@ -51,4 +52,37 @@ man() {
 export PATH="$PATH:/usr/bin/elixir"
 
 # default editor
-export EDITOR=vim;
+export EDITOR=vim
+
+# thirsty script
+PROMPT_COMMAND='$(drink_water)'
+
+WATER_TIME=${WATER_TIME:-1200} # Set time interval in seconds
+DRINK_WATER_CONF="${DRINK_WATER_CONF:-$HOME/.water}"
+
+drink_water() {
+  # If the file doesn't exist, create it
+  if [ ! -f $DRINK_WATER_CONF ]; then
+    date +%s > $DRINK_WATER_CONF
+  fi
+
+  # Tail is used to remain compatible with the pervious file format
+  next_time=$(($(tail -1 $DRINK_WATER_CONF) + $WATER_TIME))
+
+  if [ $next_time -lt $(date +%s) ]; then
+    echo "💧 You're thirsty"
+  fi
+}
+
+not_thirsty() {
+  date +%s > $DRINK_WATER_CONF
+  echo "Water is essential"
+}
+
+next_drink() {
+  next_time=$(($(cat $DRINK_WATER_CONF) + $WATER_TIME))
+  echo "Next drink at $(date -r $next_time)"
+}
+
+# ponysay & fortune
+fortune | ponysay
