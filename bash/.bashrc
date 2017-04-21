@@ -14,7 +14,9 @@ export TERM=xterm-256color
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# alias
 alias ls='ls --color=auto'
+alias pin='ping www.google.com'
 
 #PS1='\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[0;32m\]\u\[\033[0;34m\]@\[\033[0;37m\]\h\[\033[0;34m\]\[$(tput sgr0)\]\[\033[38;5;12m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]:\[\033[00;36m\] \W \[\033[0;33m\]>\[\033[0m\]'
 
@@ -26,16 +28,20 @@ if [ "$TERM" == "xterm" ]; then
     export TERM=xterm-256color
 fi
 
-# date & time at history
-export HISTTIMEFORMAT='%F %T'
+# dev stuff
+# go
+# gvm use go1.7.4 > /dev/null 2>&1
+export GOPATH=~/src/Sandbox/Go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # ruby
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-# go
-# gvm use go1.7.4 > /dev/null 2>&1
-export GOPATH=~/Sandbox/Go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# elixir
+export PATH="$PATH:/usr/bin/elixir"
+
+# default editor
+export EDITOR=vim
 
 # colors on man pages
 man() {
@@ -49,12 +55,9 @@ man() {
 	man "$@"
 }
 
-# elixir
-export PATH="$PATH:/usr/bin/elixir"
-
-# default editor
-export EDITOR=vim
-
-# Ignore from history repeat commands, and some other unimportant ones
+# history stuff
+# ignore from history repeat commands, and some other unimportant ones
 export HISTIGNORE="&:[bf]g:c:exit"
 export HISTCONTROL="ignoreboth"
+# date & time at history
+export HISTTIMEFORMAT='%F %T '
