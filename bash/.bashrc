@@ -17,6 +17,14 @@ export TERM=xterm-256color
 # alias
 alias ls='ls --color=auto'
 alias pin='ping www.google.com'
+alias search='pacman -Ss'
+alias rmd='rm -rf'
+alias shutdown='sudo shutdown'
+alias reboot='sudo reboot'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 
 #PS1='\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[0;32m\]\u\[\033[0;34m\]@\[\033[0;37m\]\h\[\033[0;34m\]\[$(tput sgr0)\]\[\033[38;5;12m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]:\[\033[00;36m\] \W \[\033[0;33m\]>\[\033[0m\]'
 
