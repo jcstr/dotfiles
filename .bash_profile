@@ -2,7 +2,8 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+# Load .profile, containing login, non-bash related initializations.
+source ~/.profile
 
-export GOPATH=~/Sandbox/Go
-#export PATH=$PATH:/Sandbox/Go
+# Load .bashrc, containing non-login related bash initializations.
+source ~/.bashrc
