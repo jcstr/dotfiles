@@ -1,6 +1,6 @@
 [user]
 	name = Jesús Castro
-	email = 51v4n@openmailbox.org
+	email = x51v4n@gmail.com
 [color]
 	ui = always
 	branch = always
@@ -37,6 +37,8 @@
 [sendmail]
 	confirm = auto
 	smtpencryption = tls
-	smtpserver = smtp.openmailbox.org
-	smtpuser = 51v4n@openmailbox.org
+	smtpserver = smtp.gmail.com
+	smtpuser = x51v4n@gmail.com
 	smtpserverport = 587
+[grep]
+	lineNumber = true
