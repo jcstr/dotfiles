@@ -8,33 +8,41 @@ setxkbmap latam
 # 256 color
 export TERM=xterm-256color
 
+if [ "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
+
 # tmux
 [ -n "$TMUX" ] && export TERM=screen-256color
+
+# default editor
+export EDITOR=vim
+
+# history stuff
+# ignore from history repeat commands, and some other unimportant ones
+export HISTIGNORE="&:[bf]g:c:exit"
+export HISTCONTROL="ignoreboth"
+# date & time at history
+export HISTTIMEFORMAT='%F %T '
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Make sure terminal wraps lines correctly after resize
-shopt -s checkwinsize
+# path & profile stuff
+source ~/.profile 
 
 # aliases
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
-PS1='\[\033[00;36m\] \W \[\033[0;33m\]>\[\033[0m\]'
+# Make sure terminal wraps lines correctly after resize
+shopt -s checkwinsize
+
+PS1='\[\033[00;36m\] \W \[\033[0;32m\]>\[\033[0m\]'
+
 
 dbus-update-activation-environment --all
-
-if [ "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
-
-# path & profile stuff
-source ~/.profile 
-
-# default editor
-export EDITOR=vim
 
 # colors on man pages
 man() {
@@ -48,9 +56,3 @@ man() {
 	man "$@"
 }
 
-# history stuff
-# ignore from history repeat commands, and some other unimportant ones
-export HISTIGNORE="&:[bf]g:c:exit"
-export HISTCONTROL="ignoreboth"
-# date & time at history
-export HISTTIMEFORMAT='%F %T '
