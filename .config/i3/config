@@ -96,6 +96,12 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+# specific workspace
+assign [class="Firefox"] $ws3
+assign [class="Chromium"] $ws3
+assign [class="Google-chrome-beta"] $ws3
+assign [class="qutebrowser"] $ws3
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -137,8 +143,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # gaps            
-#gaps inner 5
-#gaps outer 10
+#gaps inner 12
+#gaps outer 6
 smart_borders on
 smart_gaps on
 new_window normal
@@ -162,6 +168,7 @@ floating_minimum_size 100 x 100
 floating_maximum_size 1200 x 800
 
 for_window [class="^.*"] border pixel 3
+
 for_window [class="feh"] floating enable 
 for_window [class="eog"] floating enable
 
@@ -204,7 +211,6 @@ bindsym $mod+Shift+e mode $session
 # 51v4n's 
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/walls
 exec_always --no-startup-id compton --config ~/.config/compton.conf -bc
-exec_always --no-startup-id gnome-power-manager
 
 # multi-monitor
 bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
@@ -225,4 +231,7 @@ bindsym Ctrl+Mod1+a exec light -A 5
 # Mount disks
 bindsym $mod+m exec --no-startup-id udiskie -a
 
+# GNOME
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+
