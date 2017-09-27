@@ -1,4 +1,4 @@
-exec compton -bc
+exec compton -bc &
 
 udiskie -t &
 
@@ -16,4 +16,7 @@ if [ `xrandr | grep -c ' connected '` -eq 2 ]; then # dual-monitor
 else
     xrandr --output LVDS-1 --auto --primary --output VGA-1 --off --output DVI-1 --off
     
-fi
+fi &
+
+sxhkd &
+exec i3 
