@@ -17,34 +17,34 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 
 # change focus
-bindsym Mod1+j focus left
-bindsym Mod1+k focus down
-bindsym Mod1+l focus up
-bindsym Mod1+semicolon focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
-bindsym Mod1+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
-bindsym Mod1+Shift+j move left
-bindsym Mod1+Shift+k move down
-bindsym Mod1+Shift+l move up
-bindsym Mod1+Shift+semicolon move right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
-bindsym Mod1+Shift+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod1+h split h
+bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym Mod1+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -164,9 +164,6 @@ set $light_accent   #0059ff
 
   client.background       $light_accent
 
-#floating_minimum_size 100 x 100
-#floating_maximum_size 1200 x 800
-
 for_window [class="^.*"] border pixel 3
 
 for_window [class="feh"] floating enable 
@@ -219,7 +216,7 @@ bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
 #bindsym Ctrl+$mod+m exec --no-startup-id xrandr --output eDP1 --auto --left-of DP1
 
 # lock screen
-bindsym Ctrl+Mod1+l exec --no-startup-id i3lock-fancy
+bindsym Ctrl+$mod+l exec --no-startup-id i3lock-fancy
 
 # screen shot
 bindsym Print exec gnome-screenshot
@@ -227,8 +224,8 @@ bindsym Mod4+Print exec gnome-screenshot -a
 bindsym Mod4+Shift+Print exec gnome-screenshot -w
 
 # screen brightness
-bindsym Ctrl+Mod1+u exec light -U 5
-bindsym Ctrl+Mod1+a exec light -A 5
+bindsym Ctrl+$mod+u exec light -U 5
+bindsym Ctrl+$mod+a exec light -A 5
 
 # Mount disks
 bindsym $mod+m exec --no-startup-id udiskie -a
