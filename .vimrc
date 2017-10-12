@@ -16,6 +16,8 @@ set background=dark
 set wildmenu
 set laststatus=2
 set t_Co=256
+set secure
+set exrc
 
 colorscheme goldenrod
 
