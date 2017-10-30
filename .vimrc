@@ -44,6 +44,9 @@ set wildmenu
 set laststatus=2
 set t_Co=256
 
+" limits the body of git commit messages to 72 characters
+autocmd Filetype gitcommit setlocal textwidth=72
+
 " golint
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
