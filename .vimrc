@@ -13,6 +13,7 @@ set title
 " pathogen
 execute pathogen#infect() 
 
+" !!!
 set secure
 set exrc
 
@@ -65,7 +66,7 @@ command W w !sudo tee % > /dev/null
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='badwolf'
+let g:airline_theme='behelit'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1 
