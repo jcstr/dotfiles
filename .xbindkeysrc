@@ -1,4 +1,4 @@
-ncrease volume
+# Increase volume
 "pamixer --increase 5"
    XF86AudioRaiseVolume
 
