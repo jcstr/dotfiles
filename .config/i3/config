@@ -8,7 +8,7 @@ font pango:monospace 8
 floating_modifier+$mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal 
+bindsym $mod+Return exec termite 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -99,8 +99,9 @@ bindsym $mod+0 workspace 10
 # specific workspace
 assign [class="Firefox"] $ws3
 assign [class="Chromium"] $ws3
-assign [class="Google-chrome-beta"] $ws3
-assign [class="qutebrowser"] $ws3
+assign [class="nautilus"] $ws5
+assign [class="intellij-idea-ultimate-edition"] $ws2
+assign [class="clion"] $ws2
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -187,8 +188,7 @@ bar {
 
 	colors {
    	    background #000000
-       	statusline #00A5FF
-       	
+       	statusline #00A5FF       	
 		focused_workspace  #000000 #000000 #00A5FF 
        	active_workspace   #000000 #000000 #ffffff
        	inactive_workspace #000000 #000000 #888888
