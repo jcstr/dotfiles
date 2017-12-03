@@ -1,5 +1,7 @@
 exec compton -bc &
 
+xset +fp ~/.fonts/tewi &
+
 udiskie -t &
 
 $ sh ~/.fehbg &
