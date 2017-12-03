@@ -1,0 +1,15 @@
+@-moz-document url(about:newtab) {
+    .activity-stream {
+        background-color: #363636 !important;
+    }
+    .top-sites-list .top-site-outer > a {
+        color: #737373 !important;
+    }
+    .top-sites-list .top-site-outer .title.pinned span {
+        font-size: smaller !important;
+    }
+    .tile {
+      filter: grayscale(42%) !important;
+      opacity: .9 !important;
+    }
+}
