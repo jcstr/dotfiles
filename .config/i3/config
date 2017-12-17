@@ -81,8 +81,8 @@ set $ws5 5: 
 set $ws6 6: 
 set $ws7 7: 
 set $ws8 8: 
-# set $ws9 9:   
-# set $ws10 10: 
+#set $ws9 9:   
+#set $ws10 10: 
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -99,9 +99,10 @@ bindsym $mod+0 workspace 10
 # specific workspace
 assign [class="Firefox"] $ws3
 assign [class="Chromium"] $ws3
-assign [class="nautilus"] $ws5
-assign [class="intellij-idea-ultimate-edition"] $ws2
-assign [class="clion"] $ws2
+assign [class="Nautilus" instance="nautilus"] $ws5
+assign [instance="intellij-idea-ultimate-edition"] $ws2
+assign [instance="clion"] $ws2
+assign [class="thunderbird" instance="thunderbird"] $ws4
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -140,7 +141,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # gaps            
@@ -167,16 +167,17 @@ set $light_accent   #0059ff
 
 for_window [class="^.*"] border pixel 3
 
-for_window [class="feh"] floating enable 
-for_window [class="eog"] floating enable
-
-# Make menus and pop-ups floating
+# make menus and pop-ups floating
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+
+for_window [class="Pinentry"] floating enable
+for_window [class="feh" instance="feh"] floating enable 
+for_window [class="eog" instance="eog"] floating enable
 
 bar {
 	font pango:mononoki 9
@@ -207,7 +208,7 @@ mode  $session {
 }
 bindsym $mod+Shift+e mode $session
 
-# 51v4n's 
+# 51v4n's
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/walls
 exec_always --no-startup-id compton --config ~/.config/compton.conf -bc
 
@@ -226,9 +227,6 @@ bindsym Mod4+Shift+Print exec gnome-screenshot -w
 # screen brightness
 bindsym Ctrl+Mod1+u exec light -U 5
 bindsym Ctrl+Mod1+a exec light -A 5
-
-# Mount disks
-bindsym $mod+m exec --no-startup-id udiskie -a
 
 # GNOME
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings

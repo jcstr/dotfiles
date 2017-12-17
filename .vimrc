@@ -1,5 +1,6 @@
 " locales
 set encoding=utf-8
+"set spell spelllang=es_mx
 
 "  Unix as the standard file type
 set ffs=unix,dos,mac
@@ -13,7 +14,6 @@ set title
 " pathogen
 execute pathogen#infect() 
 
-" !!!
 set secure
 set exrc
 
@@ -45,7 +45,6 @@ set wildmenu
 set laststatus=2
 set t_Co=256
 
-" limits the body of git commit messages to 72 characters
 autocmd Filetype gitcommit setlocal textwidth=72
 
 " golint
