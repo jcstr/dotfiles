@@ -1,4 +1,40 @@
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export ZSH=/home/x51v4n/.oh-my-zsh
+
+ZSH_THEME="lambda-gitster"
+
+CASE_SENSITIVE="false"
+
+HIST_STAMPS="dd.mm.yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+export LANG=en_US.UTF-8
+
+# preferred editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='nano'
+ fi
+
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+i
+
 export EDITOR=vim
+
+# history stuff
+HISTFILE=~/.histfile
+HISTSIZE=500000
+SAVEHIST=500000
 
 # set DE to gnome for chromium
 export DE=gnome
@@ -16,40 +52,8 @@ export PATH=$GOPATH/bin:$PATH
 export GOBIN=$HOME/src/sandbox/go/bin
 export PATH=$PATH:$HOME/src/sandbox/go/pkg
 
-# Dircolors
-LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
-export LS_COLORS
-
-# keybindings
-bindkey -v
-typeset -g -A key
-
-bindkey '^[[3~' delete-char
-
-# Up/Down line history arrow up/down
-bindkey '^[[B' down-line-or-history
-bindkey '^[[A' up-line-or-search
-
-# Beginning of line also ctrl+e/a ctrl+up/down
-bindkey "^E" end-of-line
-bindkey "^A" beginning-of-line
-bindkey "^[^?" backward-kill-word
-
-# Ctrl+r history search
-bindkey "^R" history-incremental-search-backward
-
-# history search (usually up/down key)
-bindkey '^P' up-line-or-search
-bindkey '^N' down-line-or-search
-
-bindkey "^[[1;5D" emacs-backward-word
-bindkey "^[[1;5C" emacs-forward-word
 
 # history
-HISTFILE=~/.histfile
-HISTSIZE=500000
-SAVEHIST=500000
-
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
@@ -66,22 +70,21 @@ alias ll="ls --color -lh"
 alias la="ls --color -alh"
 alias grep="grep --color=always"
 
+# pacman
 alias Syu='sudo pacman -Syu '
 alias Ss='pacman -Ss'
 alias Rs='sudo pacman -Rs'
 
 alias pactree='pactree -c'
 
+# moving in dirs
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-# dir colors
-eval $(dircolors -b $HOME/.dircolors)
-
-# comp
+# comp stuff
 zmodload zsh/complist 
 autoload -Uz compinit
 compinit
@@ -95,17 +98,23 @@ zstyle ':completion:*:kill:*'   force-list always
 zstyle ':completion:*:*:killall:*' menu yes select
 zstyle ':completion:*:killall:*'   force-list always
 
-hist_dedup() {
-  sort ~/.histfile > ~/.histfile.old
-  uniq ~/.histfile.old > ~/.histfile
-}
+# start the gpg-agent if not already running
+if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
+  gpg-connect-agent /bye >/dev/null 2>&1
+fi
 
-# prompt
-setprompt () {
-       	# set the prompt
-		PS1=$'%_>'
-}
-setprompt
+# set SSH to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+fi
+
+# set GPG TTY
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # colors on man pages
 man() {
@@ -118,4 +127,11 @@ man() {
 	LESS_TERMCAP_us=$(printf "\e[1;32m") \
 	man "$@"
 }
+
+plugins=(
+  git 
+  npm
+)
+
+source $ZSH/oh-my-zsh.sh
 
