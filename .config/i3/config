@@ -100,9 +100,9 @@ bindsym $mod+0 workspace 10
 assign [class="Firefox"] $ws3
 assign [class="Chromium"] $ws3
 assign [class="Nautilus" instance="nautilus"] $ws5
-assign [instance="intellij-idea-ultimate-edition"] $ws2
-assign [instance="clion"] $ws2
-assign [class="thunderbird" instance="thunderbird"] $ws4
+ssign [class="thunderbird" instance="thunderbird"] $ws4
+assign [class="telegram-desktop" instance="telegram-desktop"] $ws10
+assign [class="slack" instance="slack"] $ws9
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -210,7 +210,7 @@ bindsym $mod+Shift+e mode $session
 
 # 51v4n's
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/walls
-exec_always --no-startup-id compton --config ~/.config/compton.conf -bc
+exec_always --no-startup-id compton -bc 
 
 # multi-monitor
 bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
