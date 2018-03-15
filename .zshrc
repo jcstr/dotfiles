@@ -8,11 +8,6 @@ CASE_SENSITIVE="false"
 
 HIST_STAMPS="dd.mm.yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
 export LANG=en_US.UTF-8
 
 # preferred editor for local and remote sessions
@@ -27,7 +22,6 @@ export ARCHFLAGS="-arch x86_64"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-i
 
 export EDITOR=vim
 
@@ -38,6 +32,9 @@ SAVEHIST=500000
 
 # set DE to gnome for chromium
 export DE=gnome
+
+# vagrant 
+export VAGRANT_DISABLE_RESOLV_REPLACE=1
 
 # NPM
 export PREFIX=~/.local
@@ -129,8 +126,8 @@ man() {
 }
 
 plugins=(
-  git 
-  npm
+  git
+  git-extras
 )
 
 source $ZSH/oh-my-zsh.sh
