@@ -29,7 +29,7 @@ set si
 set lbr
 set tw=500
 set background=dark
-colorscheme goldenrod
+colorscheme landscape
 
 set wildmenu
 set laststatus=2
@@ -76,14 +76,12 @@ let g:go_autodetect_gopath = 0
 let g:go_disable_autoinstall = 1
 let g:go_fmt_autosave = 1
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+let g:go_fmt_command = "goimports"
 
-" airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='behelit'
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_powerline_fonts = 1 
-let g:airline#extensions#wordcount#enabled = 0
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'landscape',
+      \ }
 
 " indent guides
 let g:indent_guides_auto_colors = 0
