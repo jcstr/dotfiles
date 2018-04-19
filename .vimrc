@@ -29,7 +29,7 @@ set si
 set lbr
 set tw=500
 set background=dark
-colorscheme landscape
+colorscheme goldenrod
 
 set wildmenu
 set laststatus=2
