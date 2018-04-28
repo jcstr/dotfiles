@@ -176,6 +176,8 @@ for_window [window_type="menu"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="feh" instance="feh"] floating enable 
 for_window [class="eog" instance="eog"] floating enable
+for_window [class="Telegram"] floating enable
+for_window [class="Slack"] floating enable
 
 bar {
 	font pango:mononoki 9
@@ -229,4 +231,5 @@ bindsym Ctrl+Mod1+a exec light -A 5
 # GNOME
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
