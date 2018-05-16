@@ -1,24 +1,19 @@
-exec compton -bc &
+# GNOME Keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,secrets,ssh)
 
-xset +fp ~/.fonts/tewi &
+export SSH_AUTH_SOCK
+export GPG_AGENT_INFO
+export GNOME_KEYRING_CONTROL
+export GNOME_KEYRING_PID
 
-udiskie -t &
+# pulseaudio
+start-pulseaudio-x11  &
 
-$ sh ~/.fehbg &
+# set keyboard layout
+setxkbmap -layout us  -option compose:ralt -option caps:hyper &
 
-if [ `xrandr | grep -c ' connected '` -eq 2 ]; then # dual-monitor
-    if [ `xrandr | grep VGA-1 | grep -c ' connected '` -eq 1 ]; then
-        xrandr --output LVDS-1 --auto --primary --output VGA-1 --auto --right-of LVDS-1
-    fi
-    if [ `xrandr | grep DVI-1 | grep -c ' connected '` -eq 1 ]; then
-        xrandr --output LVDS-1 --auto --primary --output DVI-1 --auto --right-of LVDS-1
-    fi
-       
-#    xsetroot -solid \#cccccc
-else
-    xrandr --output LVDS-1 --auto --primary --output VGA-1 --off --output DVI-1 --off
-    
-fi &
+# screen powersave
+xset +dpms
+xset dpms 0 0 300
 
-sxhkd &
-exec i3 
+exec i3
