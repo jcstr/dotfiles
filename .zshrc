@@ -1,4 +1,4 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH=/home/x51v4n/.oh-my-zsh
 
@@ -68,7 +68,7 @@ alias la="ls --color -alh"
 alias grep="grep --color=always"
 
 # pacman
-alias Syu='sudo pacman -Syu '
+alias Syu='sudo pacman -Syu'
 alias Ss='pacman -Ss'
 alias Rs='sudo pacman -Rs'
 
