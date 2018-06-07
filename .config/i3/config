@@ -100,7 +100,6 @@ bindsym $mod+0 workspace $ws10
 assign [class="Firefox"] $ws3
 assign [class="Chromium"] $ws3
 assign [class="Nautilus" instance="nautilus"] $ws5
-assign [class="Mozilla Thunderbird" instance="thunderbird"] $ws4
 assign [class="Telegram" instance="telegram-desktop"] $ws10
 assign [class="Slack" instance="slack"] $ws9
 
@@ -233,3 +232,4 @@ exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-flashback
+
