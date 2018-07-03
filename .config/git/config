@@ -2,7 +2,7 @@
 	name = Jesús Castro
 	email = x51v4n@gmail.com
 [color]
-	ui = always
+	ui = true
 	branch = always
 	diff = always
 	interactive = always
@@ -12,11 +12,12 @@
 	local = green bold
 	remote = cyan bold
 [color "diff"]
-	meta = yellow bold
+	meta = yellow
 	frag = magenta bold
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+	commit = yellow bold
 [color "status"]
 	added = green bold
 	changed = yellow bold
@@ -24,16 +25,13 @@
 [core]
 	editor = vim
 	exludesfile = ~/.gitignore
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [commit]
-	template = ~/.gitmessage.txt
+	template = ~/.config/git/gitmessage.txt
 [web]
 	browser = chromium
 [rerere]
 	enabled = true	
-[url "https://aur.archlinux.org/"]
-	insteadOf = "aur:"
-[url "ssh+git://aur4.archlinux.org"]
-	pushInsteadOf = "aur:"
 [sendmail]
 	confirm = auto
 	smtpencryption = tls
@@ -42,3 +40,21 @@
 	smtpserverport = 587
 [grep]
 	lineNumber = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[diff-so-fancy]
+	markEmptyLines = false
+	changeHunkIndicators = false
+	stripLeadingSymbols = false
+[url "https://aur.archlinux.org/"]
+	insteadOf = "aur:"
+[url "ssh+git://aur4.archlinux.org"]
+	pushInsteadOf = "aur:"
+[credential]
+	helper = store
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
