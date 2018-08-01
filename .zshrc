@@ -2,7 +2,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH=/home/x51v4n/.oh-my-zsh
 
-ZSH_THEME="lambda-gitster"
+ZSH_THEME="spaceship"
 
 CASE_SENSITIVE="false"
 
