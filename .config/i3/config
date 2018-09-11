@@ -100,10 +100,11 @@ bindsym $mod+0 workspace $ws10
 assign [class="Firefox"] $ws3
 assign [class="Chromium"] $ws3
 assign [class="Nautilus" instance="nautilus"] $ws5
-assign [class="Mozilla Thunderbird" instance="thunderbird"] $ws4
 assign [class="Telegram" instance="telegram-desktop"] $ws10
 assign [class="Slack" instance="slack"] $ws9
 assign [class="vlc" instance="vlc"] $ws6
+assign [class="code" instance="code"] $ws2
+assign [class="keepassxc" instance="keepassxc"] $ws5
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
