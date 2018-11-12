@@ -1,13 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-export ZSH=/home/x51v4n/.oh-my-zsh
-
-ZSH_THEME="lambda-gitster"
-
-CASE_SENSITIVE="false"
-
-HIST_STAMPS="dd.mm.yyyy"
-
+export ZSH=/home/csxr/.oh-my-zsh
 export LANG=en_US.UTF-8
 
 # preferred editor for local and remote sessions
@@ -22,13 +14,7 @@ export ARCHFLAGS="-arch x86_64"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 export EDITOR=vim
-
-# history stuff
-HISTFILE=~/.histfile
-HISTSIZE=500000
-SAVEHIST=500000
 
 # set DE to gnome for chromium
 export DE=gnome
@@ -37,17 +23,31 @@ export DE=gnome
 export VAGRANT_DISABLE_RESOLV_REPLACE=1
 
 # NPM
-export PREFIX=~/.local
-export NODE_PATH=~/.local/lib/node_modules/
-
-# browser
-export BROWSER=chromium
+PATH="$HOME/.node_modules/bin/:$PATH"
+export npm_config_prefix=~/.node_modules
 
 # go
 export GOPATH=$HOME/src/sandbox/go
 export PATH=$GOPATH/bin:$PATH
 export GOBIN=$HOME/src/sandbox/go/bin
 export PATH=$PATH:$HOME/src/sandbox/go/pkg
+
+# browser
+export BROWSER=chromium
+
+source $ZSH/oh-my-zsh.sh
+
+
+
+ZSH_THEME="lambda-gitster"
+CASE_SENSITIVE="false"
+HIST_STAMPS="dd.mm.yyyy"
+
+# history stuff
+HISTFILE=~/.histfile
+HISTSIZE=500000
+SAVEHIST=500000
+
 
 
 # history
@@ -130,10 +130,7 @@ plugins=(
   git-extras
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # explain.sh begins
-
 explain() {
 if [ "$#" -eq 0 ]; then
 	while read  -p "Command: " cmd; do
