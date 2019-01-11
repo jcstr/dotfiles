@@ -23,8 +23,9 @@ export DE=gnome
 export VAGRANT_DISABLE_RESOLV_REPLACE=1
 
 # NPM
-PATH="$HOME/.node_modules/bin/:$PATH"
-export npm_config_prefix=~/.node_modules
+PATH="$HOME/.node_modules/bin:$PATH"
+export PREFIX=~/.local
+export NODE_PATH=~/.local/lib/node_modules/
 
 # go
 export GOPATH=$HOME/src/sandbox/go
@@ -35,13 +36,14 @@ export PATH=$PATH:$HOME/src/sandbox/go/pkg
 # browser
 export BROWSER=chromium
 
-source $ZSH/oh-my-zsh.sh
-
 
 
 ZSH_THEME="lambda-gitster"
 CASE_SENSITIVE="false"
 HIST_STAMPS="dd.mm.yyyy"
+
+source $ZSH/oh-my-zsh.sh
+
 
 # history stuff
 HISTFILE=~/.histfile
@@ -73,6 +75,9 @@ alias Ss='pacman -Ss'
 alias Rs='sudo pacman -Rs'
 
 alias pactree='pactree -c'
+
+# yay
+alias Ys='yay -Ss'
 
 # moving in dirs
 alias ..="cd .."
@@ -146,3 +151,4 @@ if [ "$#" -eq 0 ]; then
 fi
 }
 
+source /usr/share/nvm/init-nvm.sh
