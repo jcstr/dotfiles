@@ -97,8 +97,8 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # specific workspace
-assign [class="Firefox"] $ws3
 assign [class="Chromium"] $ws3
+assign [class="Google Chrome" instance="google-chrome-unstable"] $ws3
 assign [class="Nautilus" instance="nautilus"] $ws5
 assign [class="Telegram" instance="telegram-desktop"] $ws10
 assign [class="Slack" instance="slack"] $ws9
@@ -180,6 +180,7 @@ for_window [class="feh" instance="feh"] floating enable
 for_window [class="eog" instance="eog"] floating enable
 for_window [class="Telegram"] floating enable
 for_window [class="Slack"] floating enable
+for_window [class="gnome-calculator" instance="gnome-calculator"] floating enable
 
 bar {
 	font pango:mononoki 9
@@ -216,7 +217,6 @@ exec_always --no-startup-id compton -bc
 
 # multi-monitor
 bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
-#bindsym Ctrl+$mod+m exec --no-startup-id xrandr --output eDP1 --auto --left-of DP1
 
 # lock screen
 bindsym Ctrl+Mod1+l exec --no-startup-id i3lock-fancy
@@ -234,5 +234,4 @@ bindsym Ctrl+Mod1+a exec light -A 5
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id gnome-flashback
-#
+
