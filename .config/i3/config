@@ -211,7 +211,7 @@ mode  $session {
 }
 bindsym $mod+Shift+e mode $session
 
-# 51v4n's
+# misc
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/walls
 exec_always --no-startup-id compton -bc 
 
@@ -219,7 +219,7 @@ exec_always --no-startup-id compton -bc
 bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
 
 # lock screen
-bindsym Ctrl+Mod1+l exec --no-startup-id i3lock-fancy
+bindsym Ctrl+Mod1+l exec --no-startup-id betterlockscreen -l dim
 
 # screen shot
 bindsym Print exec gnome-screenshot
