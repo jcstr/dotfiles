@@ -34,7 +34,7 @@
 
 [commit]
 	template = ~/.config/git/gitmessage.txt
-#	gpgsign = true
+	gpgsign = true
 
 [web]
 	browser = chromium
