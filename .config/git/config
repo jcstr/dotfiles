@@ -1,16 +1,19 @@
 [user]
 	name = Jesús Castro
-	email = x51v4n@gmail.com
+	email = jesuscastro@pm.me
+
 [color]
 	ui = true
 	branch = always
 	diff = always
 	interactive = always
 	status = always
+
 [color "branch"]
 	current = yellow bold
 	local = green bold
 	remote = cyan bold
+
 [color "diff"]
 	meta = yellow
 	frag = magenta bold
@@ -18,43 +21,68 @@
 	new = green bold
 	whitespace = red reverse
 	commit = yellow bold
+
 [color "status"]
 	added = green bold
 	changed = yellow bold
 	untracked = red bold
+
 [core]
 	editor = vim
-	exludesfile = ~/.gitignore
+	exludesfile = ~/.gitignore 
 	pager = diff-so-fancy | less --tabs=4 -RFX
+
 [commit]
 	template = ~/.config/git/gitmessage.txt
+#	gpgsign = true
+
 [web]
 	browser = chromium
+
 [rerere]
 	enabled = true	
-[sendmail]
-	confirm = auto
-	smtpencryption = tls
-	smtpserver = smtp.gmail.com
-	smtpuser = x51v4n@gmail.com
-	smtpserverport = 587
+
 [grep]
 	lineNumber = true
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+
 [diff-so-fancy]
 	markEmptyLines = false
 	changeHunkIndicators = false
 	stripLeadingSymbols = false
+
 [url "https://aur.archlinux.org/"]
 	insteadOf = "aur:"
+
 [url "ssh+git://aur4.archlinux.org"]
 	pushInsteadOf = "aur:"
+
 [credential]
 	helper = store
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+	insteadOf = "https://github.com/"
+	insteadOf = "github:github"
+	insteadOf = "git://github.com/github"
+
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+
+[help]
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true	
+
+[diff]
+	# Detect copies as well as renames
+	renames = copies
