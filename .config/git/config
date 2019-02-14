@@ -1,6 +1,6 @@
 [user]
 	name = Jesús Castro
-	email = jesuscastro@pm.me
+	email = x51v4n@gmail.com
 
 [color]
 	ui = true
@@ -86,3 +86,5 @@
 [diff]
 	# Detect copies as well as renames
 	renames = copies
+[gpg]
+	program = gpg2
