@@ -1,6 +1,7 @@
 [user]
 	name = Jesús Castro
 	email = x51v4n@gmail.com
+	signingkey = 1B7E70EE
 
 [color]
 	ui = true
@@ -35,6 +36,9 @@
 [commit]
 	template = ~/.config/git/gitmessage.txt
 	gpgsign = true
+
+[log]
+	decorate = full
 
 [web]
 	browser = chromium
@@ -86,5 +90,15 @@
 [diff]
 	# Detect copies as well as renames
 	renames = copies
+
 [gpg]
 	program = gpg2
+
+[sendemail]
+	from = Jesús Castro  <x51v4n@gmail.com>
+	smtpserver = smtp.gmail.com
+	smtpuser = x51v4n@gmail.com
+	smtpencryption = tls
+	chainreplyto = false
+	smtpserverport = 587
+
