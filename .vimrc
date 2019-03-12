@@ -18,13 +18,19 @@ set number
 syntax on
 
 " indentation
-set tabstop=4
-set noet                                                            
-set shiftwidth=4
-set autoindent
-set si
-set lbr
-set tw=500
+"set tabstop=4
+"set noet                                                            
+"set shiftwidth=4
+"set autoindent
+"set si
+"set lbr
+"set tw=500
+
+" Linux kernel coding style
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab
 
 set background=dark
 colorscheme goldenrod
@@ -50,7 +56,7 @@ set backupskip=/tmp/*,/private/tmp/*
 " don’t show the intro message when starting Vim
 set shortmess=atI
 
-" show the current mode
+" show the current mode (already on airline)
 set noshowmode
 
 " enable mouse in all modes
@@ -112,7 +118,6 @@ function! g:committia_hooks.edit_open(info)
     imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
     imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
 endfunction
-
 
 " vim-fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
