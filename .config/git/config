@@ -36,6 +36,7 @@
 [commit]
 	template = ~/.config/git/gitmessage.txt
 	gpgsign = true
+	verbose = true
 
 [log]
 	decorate = full
@@ -93,6 +94,9 @@
 
 [gpg]
 	program = gpg2
+
+[format]
+    signOff = true
 
 [sendemail]
 	from = Jesús Castro  <x51v4n@gmail.com>
