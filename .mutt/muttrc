@@ -38,3 +38,22 @@ unignore Date: From: To: CC: Bcc: Subject:
 hdr_order Subject: Date: From: To: CC: Bcc:
 set index_format = "%{%b %d} %-15.15L [%Z] %s" # custom index format
 
+# Kernel Documentation
+set send_charset="us-ascii:utf-8"
+
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+auto_view text/x-patch text/x-diff
+
+# Patches view
+color body brightred    default "^-.*"
+color body brightgreen  default "^[+].*"
+color body brightwhite  default "^diff --git.*"
+color body brightwhite  default "^index [a-f0-9].*"
+color body brightcyan   default "^@@.*@@"
+
+# some people actually like these settings
+set pager_stop
+bind pager <up> previous-line
+bind pager <down> next-line
+
