@@ -33,6 +33,9 @@ export PATH=$GOPATH/bin:$PATH
 export GOBIN=$HOME/src/sandbox/go/bin
 export PATH=$PATH:$HOME/src/sandbox/go/pkg
 
+# java
+export CLASSPATH=.:/usr/share/java/tomcat8/servlet-api.jar
+
 # browser
 export BROWSER=chromium
 
