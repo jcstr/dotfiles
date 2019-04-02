@@ -54,7 +54,6 @@ HISTSIZE=500000
 SAVEHIST=500000
 
 
-
 # history
 setopt append_history
 setopt extended_history
