@@ -4,7 +4,7 @@ foreground_bold = #ffffff
 background = #000000
 
 [options]
-font = mononoki 9
+font = Source Code Pro Regular 9
 allow_bold = true
 audible_bell = false
 clickable_url = true
