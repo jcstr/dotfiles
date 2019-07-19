@@ -29,12 +29,11 @@ export NODE_PATH=~/.local/lib/node_modules/
 
 # go
 export GOPATH=$HOME/go
-
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:/usr/lib/go/bin:$GOPATH/bin
 
 # browser
 export BROWSER=chromium
-
-
 
 ZSH_THEME="lambda-gitster"
 CASE_SENSITIVE="false"
