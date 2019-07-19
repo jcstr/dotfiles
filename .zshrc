@@ -28,13 +28,8 @@ export PREFIX=~/.local
 export NODE_PATH=~/.local/lib/node_modules/
 
 # go
-export GOPATH=$HOME/src/sandbox/go
-export PATH=$GOPATH/bin:$PATH
-export GOBIN=$HOME/src/sandbox/go/bin
-export PATH=$PATH:$HOME/src/sandbox/go/pkg
+export GOPATH=$HOME/go
 
-# java
-export CLASSPATH=.:/usr/share/java/tomcat8/servlet-api.jar
 
 # browser
 export BROWSER=chromium
@@ -52,6 +47,7 @@ source $ZSH/oh-my-zsh.sh
 HISTFILE=~/.histfile
 HISTSIZE=500000
 SAVEHIST=500000
+
 
 
 # history
@@ -153,4 +149,3 @@ if [ "$#" -eq 0 ]; then
 fi
 }
 
-source /usr/share/nvm/init-nvm.sh
