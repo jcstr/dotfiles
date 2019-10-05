@@ -215,9 +215,6 @@ bindsym $mod+Shift+e mode $session
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/walls
 exec_always --no-startup-id compton -bc 
 
-# multi-monitor
-bindsym $mod+Shift+s exec --no-startup-id /bin/monitor
-
 # lock screen
 bindsym Ctrl+Mod1+l exec --no-startup-id betterlockscreen -l dim
 
@@ -232,6 +229,5 @@ bindsym Ctrl+Mod1+a exec light -A 5
 
 # GNOME
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
