@@ -42,7 +42,7 @@
 	decorate = full
 
 [web]
-	browser = chromium
+	browser = google-chrome
 
 [rerere]
 	enabled = true	
@@ -71,11 +71,6 @@
 	helper = store
 
 [url "git@github.com:"]
-	insteadOf = "https://github.com/"
-	insteadOf = "github:github"
-	insteadOf = "git://github.com/github"
-
-[url "git@github.com:"]
 	pushInsteadOf = "https://github.com/"
 	pushInsteadOf = "github:"
 	pushInsteadOf = "git://github.com/"
@@ -94,13 +89,13 @@
 	renames = copies
 
 [gpg]
-	program = gpg2
+	program = gpg
 
 [format]
     signOff = true
 
 [sendemail]
-	from = Jesús Castro  <x51v4n@gmail.com>
+	from = Jesús Castro <x51v4n@gmail.com>
 	smtpserver = smtp.gmail.com
 	smtpuser = x51v4n@gmail.com
 	smtpencryption = tls
