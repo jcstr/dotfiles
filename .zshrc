@@ -28,7 +28,7 @@ export PREFIX=~/.local
 export NODE_PATH=~/.local/lib/node_modules/
 
 # go
-export GOPATH=$HOME/go
+export GOPATH=$HOME/src/sandbox/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/lib/go/bin:$GOPATH/bin
 
@@ -130,6 +130,8 @@ man() {
 plugins=(
   git
   git-extras
+  django
+  docker
 )
 
 # explain.sh begins
