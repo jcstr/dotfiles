@@ -1,0 +1,87 @@
+env:
+  TERM: xterm-256color
+
+# Window configurations
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+
+  padding:
+    x: 0
+    y: 0
+
+  decorations: full
+
+scrolling:
+  multiplier: 1
+
+# Font configurations
+font:
+  normal:
+    family: Noto Sans Mono
+    style: Regular
+
+  bold:
+    family: Noto Sans Mono
+    style: Bold
+
+  italic:
+    family: Noto Sans Mono
+    style: Italic
+
+  size: 9.0
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+  scale_with_dpi: true
+
+  use_thin_strokes: false
+
+draw_bold_text_with_bright_colors: true
+
+
+colors:
+  primary: 
+    background: '0x000000'
+    # Standard light gray
+    foreground: '0xeaeaea'
+    # This is the green foreground color that we sometimes like to use.
+    # foreground: '0x00FF00'
+
+# Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xcd0000'
+    green:   '0x00cd00'
+    yellow:  '0xcdcd00'
+    blue:    '0x0000ee'
+    magenta: '0xcd00cd'
+    cyan:    '0x00cdcd'
+    white:   '0xe5e5e5'
+
+  # Bright colors
+  bright:
+    black:   '0x7f7f7f'
+    red:     '0xff0000'
+    green:   '0x00ff00'
+    yellow:  '0xffff00'
+    blue:    '0x5c5cff'
+    magenta: '0xff00ff'
+    cyan:    '0x00ffff'
+    white:   '0xffffff'
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+dynamic_title: true
+
+live_config_reload: true
+
