@@ -37,7 +37,7 @@ export BROWSER=chromium
 
 ZSH_THEME="lambda-gitster"
 CASE_SENSITIVE="false"
-HIST_STAMPS="dd.mm.yyyy"
+HIST_STAMPS="%d/%m/%y - %T"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,8 +85,9 @@ alias ......="cd ../../../../.."
 
 # comp stuff
 zmodload zsh/complist 
-autoload -Uz compinit
-compinit
+#autoload -Uz compinit
+#compinit
+autoload -U compinit && compinit
 zstyle :compinstall filename '${HOME}/.zshrc'
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -130,9 +131,19 @@ man() {
 plugins=(
   git
   git-extras
+  gitfast
   django
+  virtualenv
+  tmux
+  history-substring-search
   docker
+  zsh-completions
+  safe-paste
+  zsh-autosuggestions
 )
+
+# syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # explain.sh begins
 explain() {
