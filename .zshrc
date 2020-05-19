@@ -1,5 +1,4 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH=/home/csxr/.oh-my-zsh
 export LANG=en_US.UTF-8
 
 # preferred editor for local and remote sessions
@@ -13,11 +12,9 @@ export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+#export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEYPATH="~/.ssh"
 export EDITOR=vim
-
-# set DE to gnome for chromium
-export DE=gnome
 
 # vagrant 
 export VAGRANT_DISABLE_RESOLV_REPLACE=1
@@ -32,22 +29,17 @@ export GOPATH=$HOME/src/sandbox/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/lib/go/bin:$GOPATH/bin
 
-# browser
-export BROWSER=chromium
-
+# oh my zsh
 ZSH_THEME="lambda-gitster"
 CASE_SENSITIVE="false"
 HIST_STAMPS="%d/%m/%y - %T"
 
 source $ZSH/oh-my-zsh.sh
 
-
 # history stuff
 HISTFILE=~/.histfile
 HISTSIZE=500000
 SAVEHIST=500000
-
-
 
 # history
 setopt append_history
@@ -70,7 +62,6 @@ alias grep="grep --color=always"
 alias Syu='sudo pacman -Syu'
 alias Ss='pacman -Ss'
 alias Rs='sudo pacman -Rs'
-
 alias pactree='pactree -c'
 
 # yay
@@ -85,8 +76,8 @@ alias ......="cd ../../../../.."
 
 # comp stuff
 zmodload zsh/complist 
-#autoload -Uz compinit
-#compinit
+autoload -Uz compinit
+compinit
 autoload -U compinit && compinit
 zstyle :compinstall filename '${HOME}/.zshrc'
 
@@ -140,6 +131,7 @@ plugins=(
   zsh-completions
   safe-paste
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 # syntax highlighting
@@ -160,4 +152,3 @@ if [ "$#" -eq 0 ]; then
 	echo "explain 'cmd -o | ...'   one quoted command to explain it."
 fi
 }
-
