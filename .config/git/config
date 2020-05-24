@@ -101,3 +101,5 @@
 	chainreplyto = false
 	smtpserverport = 587
 
+[alias]
+	lg = log --oneline --graph --decorate
