@@ -1,5 +1,31 @@
+# Oh My Zsh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH=/home/jesus/.oh-my-zsh
 export LANG=en_US.UTF-8
+
+ZSH_THEME="lambda-gitster"
+CASE_SENSITIVE="false"
+HIST_STAMPS="%d/%m/%Y - %T"
+
+source $ZSH/oh-my-zsh.sh
+
+plugins=(
+  git
+  git-extras
+  gitfast
+  django
+  virtualenv
+  tmux
+  history-substring-search
+  docker
+  zsh-completions
+  safe-paste
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+# syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -12,7 +38,6 @@ export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 
 # ssh
-#export SSH_KEY_PATH="~/.ssh/rsa_id"
 export SSH_KEYPATH="~/.ssh"
 export EDITOR=vim
 
@@ -28,13 +53,6 @@ export NODE_PATH=~/.local/lib/node_modules/
 export GOPATH=$HOME/src/sandbox/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/lib/go/bin:$GOPATH/bin
-
-# oh my zsh
-ZSH_THEME="lambda-gitster"
-CASE_SENSITIVE="false"
-HIST_STAMPS="%d/%m/%y - %T"
-
-source $ZSH/oh-my-zsh.sh
 
 # history stuff
 HISTFILE=~/.histfile
@@ -61,7 +79,6 @@ alias grep="grep --color=always"
 # pacman
 alias Syu='sudo pacman -Syu'
 alias Ss='pacman -Ss'
-alias Rs='sudo pacman -Rs'
 alias pactree='pactree -c'
 
 # yay
@@ -119,24 +136,6 @@ man() {
 	man "$@"
 }
 
-plugins=(
-  git
-  git-extras
-  gitfast
-  django
-  virtualenv
-  tmux
-  history-substring-search
-  docker
-  zsh-completions
-  safe-paste
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-
-# syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # explain.sh begins
 explain() {
 if [ "$#" -eq 0 ]; then
@@ -152,3 +151,4 @@ if [ "$#" -eq 0 ]; then
 	echo "explain 'cmd -o | ...'   one quoted command to explain it."
 fi
 }
+
