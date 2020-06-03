@@ -1,7 +1,9 @@
 # Oh My Zsh
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+#export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=/home/jesus/.oh-my-zsh
 export LANG=en_US.UTF-8
+
+export PATH=$PATH:/home/jesus/.local/bin
 
 ZSH_THEME="lambda-gitster"
 CASE_SENSITIVE="false"
@@ -134,21 +136,5 @@ man() {
 	LESS_TERMCAP_ue=$(printf "\e[0m") \
 	LESS_TERMCAP_us=$(printf "\e[1;32m") \
 	man "$@"
-}
-
-# explain.sh begins
-explain() {
-if [ "$#" -eq 0 ]; then
-	while read  -p "Command: " cmd; do
-		curl -Gs "https://www.mankier.com/api/explain/?cols="$(tput cols) --data-urlencode "q=$cmd"
-	done
-	echo "Bye!"
-	elif [ "$#" -eq 1 ]; then
-	curl -Gs "https://www.mankier.com/api/explain/?cols="$(tput cols) --data-urlencode "q=$1"
-	else
-	echo "Usage"
-	echo "explain                  interactive mode."
-	echo "explain 'cmd -o | ...'   one quoted command to explain it."
-fi
 }
 
