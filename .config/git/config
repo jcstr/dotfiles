@@ -103,3 +103,6 @@
 
 [alias]
 	lg = log --oneline --graph --decorate
+
+[pull]
+	rebase = false
