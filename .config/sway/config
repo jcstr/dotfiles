@@ -1,0 +1,237 @@
+# i3 config file (v4)
+set $fontname SF Mono Regular
+set $biggerfont 10
+
+set $mod Mod4
+
+# keyboard layout
+input * xkb_layout "latam"
+
+# sway stuff
+exec mako
+exec swaybg -c "#151718"
+#output "*" bg /home/jesus/Pictures/wall/arch.jpg fill
+
+# Font 
+font pango:SF Mono Regular 9
+
+# gaps and borders 
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+
+# launcher 
+bindsym $mod+d exec bemenu-run -i -p 'exec:' --fn '$fontname $biggerfont'
+
+# Volume keys
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+# Idle - turn off monitor after 5 minutes
+exec swayidle \
+  timeout 300 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"'
+
+# Unless a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec termite
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# workspace names
+set $ws1 1 
+set $ws2 2 
+set $ws3 3 
+set $ws4 4 
+set $ws5 5 
+set $ws6 6 
+set $ws7 7 
+set $ws8 8 
+set $ws9 9 
+set $ws10 10 
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# specific workspace
+assign [class="firefox"] $ws3
+assign [class="Google-chrome"] $ws3
+assign [class="Telegram"] $ws10
+assign [class="Slack"] $ws9
+assign [class="vlc"] $ws6
+assign [class="Code"] $ws2
+assign [class="KeePassXC"] $ws5
+assign [class="Org.gnome.Nautilus"] $ws5
+
+# Color scheme:
+set $dark_base      #2E3440
+set $dark_accent    #757d8c
+set $light_accent   #0059ff 
+
+# Windows Colors:
+# class                   border           backgr.           text        indicator         child_border
+client.focused            #4c7899          $light_accent     #ffffff     $light_accent     $light_accent
+client.focused_inactive   $dark_base       $dark_base        #ffffff     $dark_base        $dark_accent
+client.unfocused          $dark_base       $dark_base        #888888     $dark_base        $dark_accent
+client.urgent             #2f343a          $dark_base        #ffffff     $dark_accent      $light_accent
+client.placeholder        #000000          $dark_base        #ffffff     #000000           $light_accent
+
+client.background       $light_accent
+
+# exceptions 
+for_window [class="Google-chrome"] border pixel 0
+for_window [class="KeePassXC"] border pixel 0
+for_window [class="Code"] border pixel 0
+for_window [class="Slack"] border pixel 0
+for_window [class="vlc"] border pixel 0
+for_window [class="firefoxdeveloperedition"] border pixel 0
+for_window [class="firefox"] border pixel 0
+
+# make menus and pop-ups floating
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+for_window [class="Pinentry"] floating enable
+for_window [class="Telegram"] floating enable
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# i3bar
+bar {
+	status_command i3status -c ~/.config/i3/i3status.conf
+	tray_output none
+	position top
+	separator_symbol "·"
+
+	colors {
+   		background 			#000000
+		focused_workspace  	#000000 #000000 #00A5FF 
+       	active_workspace   	#000000 #000000 #ffffff
+       	inactive_workspace	#000000 #000000 #888888
+       	urgent_workspace   	#2f343a #900000 #ffffff
+	}
+}
+
+# Session Menu
+set $session " (E)xit | (P)oweroff | (R)eboot | (L)ock "
+mode  $session {
+		 bindsym e exec swaymsg exit
+         bindsym p exec $psst systemctl poweroff; mode "default"
+         bindsym r exec $psst systemctl reboot; mode "default"
+		 bindsym l exec swaylock; mode "default"
+         bindsym q mode "default"
+         bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode $session
+
