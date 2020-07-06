@@ -10,15 +10,8 @@ set ffs=unix,dos,mac
 set hlsearch
 set title
 
-" think it twice
-set secure
-set exrc
-
 set number
 syntax on
-
-" spell checking
-"set spell spelllang=en_us
 
 " indentation
 set tabstop=4
@@ -68,12 +61,13 @@ set mouse=a
 " save with sudo
 command W w !sudo tee % > /dev/null
 
-" filetype stuff
+" Filetypes (PKGBUILD, Go, Git, Python)
 autocmd FileType for PKGBUILD set expandtab shiftwidth=2 softtabstop=4
 autocmd FileType go set noexpandtab
 autocmd Filetype gitcommit setlocal textwidth=72
+autocmd Filetype py set expandtab autoindent tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 
-" filetype for PKGBUILD
+" PKGBUILD
 augroup pkgbuild
     autocmd!
     autocmd BufRead,BufNewFile PKGBUILD set filetype=PKGBUILD
