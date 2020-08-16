@@ -5,8 +5,9 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 ###
-#Oh-my-zsh
+# Oh-my-zsh
 #
+
 ZSH_THEME="lambda-gitster"
 source $ZSH/oh-my-zsh.sh
 
@@ -26,9 +27,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-
-# syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 CASE_SENSITIVE="false"
 
@@ -55,7 +53,7 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/lib/go/bin:$GOPATH/bin
 
 ##
-#History
+# History
 #
 
 HIST_STAMPS="%d/%m/%Y - %T"
@@ -119,7 +117,7 @@ zstyle ":completion:*:*:kill:*:processes" list-colors "=(#b) #([0-9]#)*=0=01;31"
 zstyle ":completion:*:kill:*" command "ps -u $USER -o pid,%cpu,tty,cputime,cmd"
 
 ##
-#GPG
+# GPG
 #
 
 # set SSH to use gpg-agent
@@ -138,7 +136,7 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 ###
-#Colors
+# Color
 #
 
 # color on man pages
