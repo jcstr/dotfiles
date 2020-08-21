@@ -1,4 +1,3 @@
-#export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="/home/jesus/.oh-my-zsh"
 export PATH="$PATH:/home/jesus/.local/bin:/usr/local/bin"
 export LANG=en_US.UTF-8
@@ -9,7 +8,6 @@ export LC_CTYPE=en_US.UTF-8
 #
 
 ZSH_THEME="lambda-gitster"
-source $ZSH/oh-my-zsh.sh
 
 plugins=(
   git
@@ -28,6 +26,13 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+##
+# Dircolors
+#
+
+LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+export LS_COLORS
+
 CASE_SENSITIVE="false"
 
 # Compilation flags
@@ -43,9 +48,8 @@ export EDITOR=vim
 export VAGRANT_DISABLE_RESOLV_REPLACE=1
 
 # NPM
-#PATH="$HOME/.node_modules/bin:$PATH"
-#export PREFIX=~/.local
-#export NODE_PATH=~/.local/lib/node_modules/
+export PREFIX=~/.local
+export NODE_PATH=~/.local/lib/node_modules/
 
 # go
 export GOPATH=$HOME/src/sandbox/go
@@ -74,7 +78,8 @@ setopt share_history
 # Aliases
 #
 
-alias ls="ls --color"
+# ls
+alias ls="ls --color -F"
 alias l="ls --color -lh"
 alias la="ls --color -alh"
 
@@ -162,4 +167,11 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # color in grep
 alias grep="grep --color=always"
+
+
+###
+# AJA!
+#
+
+source $ZSH/oh-my-zsh.sh
 
