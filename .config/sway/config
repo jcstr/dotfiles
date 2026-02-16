@@ -1,237 +1,186 @@
-# i3 config file (v4)
-set $fontname SF Mono Regular
-set $biggerfont 10
-
+### Variables
 set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $menu fuzzel
 
-# keyboard layout
-input * xkb_layout "latam"
+font pango:DejaVu Sans Mono 14
 
-# sway stuff
-exec mako
-exec swaybg -c "#151718"
-#output "*" bg /home/jesus/Pictures/wall/arch.jpg fill
+### Output
+output * bg /home/jcstr/Pictures/'desktop Edited.jpg' fill
 
-# Font 
-font pango:SF Mono Regular 9
+### Seat
+seat seat0 hide_cursor 3000
 
-# gaps and borders 
-default_border pixel 2
-default_floating_border pixel 2
+### Borders
+default_border pixel 5
+default_floating_border pixel 5
 hide_edge_borders smart
 
-# launcher 
-bindsym $mod+d exec bemenu-run -i -p 'exec:' --fn '$fontname $biggerfont'
-
-# Volume keys
-bindsym XF86AudioRaiseVolume exec pamixer -i 5
-bindsym XF86AudioLowerVolume exec pamixer -d 5
-bindsym XF86AudioMute exec pamixer -t
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-
-# Idle - turn off monitor after 5 minutes
-exec swayidle \
-  timeout 300 'swaymsg "output * dpms off"' \
-  resume 'swaymsg "output * dpms on"'
-
-# Unless a window is fullscreen
-for_window [class="^.*"] inhibit_idle fullscreen
-for_window [app_id="^.*"] inhibit_idle fullscreen
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec termite
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# workspace names
-set $ws1 1 
-set $ws2 2 
-set $ws3 3 
-set $ws4 4 
-set $ws5 5 
-set $ws6 6 
-set $ws7 7 
-set $ws8 8 
-set $ws9 9 
-set $ws10 10 
-
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
-
-# specific workspace
-assign [class="firefox"] $ws3
-assign [class="Google-chrome"] $ws3
-assign [class="Telegram"] $ws10
-assign [class="Slack"] $ws9
-assign [class="vlc"] $ws6
-assign [class="Code"] $ws2
-assign [class="KeePassXC"] $ws5
-assign [class="Org.gnome.Nautilus"] $ws5
-
-# Color scheme:
+### Colors
 set $dark_base      #2E3440
 set $dark_accent    #757d8c
-set $light_accent   #0059ff 
+set $light_accent   #0059ff
 
-# Windows Colors:
-# class                   border           backgr.           text        indicator         child_border
-client.focused            #4c7899          $light_accent     #ffffff     $light_accent     $light_accent
-client.focused_inactive   $dark_base       $dark_base        #ffffff     $dark_base        $dark_accent
-client.unfocused          $dark_base       $dark_base        #888888     $dark_base        $dark_accent
-client.urgent             #2f343a          $dark_base        #ffffff     $dark_accent      $light_accent
-client.placeholder        #000000          $dark_base        #ffffff     #000000           $light_accent
+# class                   border        backgr.          text       indicator        child_border
+client.focused            #4c7899       $light_accent    #ffffff    $light_accent    $light_accent
+client.focused_inactive   $dark_base    $dark_base       #ffffff    $dark_base       $dark_accent
+client.unfocused          $dark_base    $dark_base       #888888    $dark_base       $dark_accent
+client.urgent             #2f343a       $dark_base       #ffffff    $dark_accent     $light_accent
+client.placeholder        #000000       $dark_base       #ffffff    #000000          $light_accent
+client.background         $light_accent
 
-client.background       $light_accent
+### Window rules
+# Remove borders on specific apps (verify app_id with: swaymsg -t get_tree | grep app_id)
+for_window [app_id="google-chrome"] border pixel 0
+for_window [app_id="org.keepassxc.KeePassXC"] border pixel 0
+for_window [app_id="code"] border pixel 0
+for_window [app_id="Slack"] border pixel 0
+for_window [app_id="vlc"] border pixel 0
+for_window [app_id="firefox-developer-edition"] border pixel 0
+for_window [app_id="firefox"] border pixel 0
 
-# exceptions 
-for_window [class="Google-chrome"] border pixel 0
-for_window [class="KeePassXC"] border pixel 0
-for_window [class="Code"] border pixel 0
-for_window [class="Slack"] border pixel 0
-for_window [class="vlc"] border pixel 0
-for_window [class="firefoxdeveloperedition"] border pixel 0
-for_window [class="firefox"] border pixel 0
+# Floating windows
+for_window [app_id="pinentry-qt"] floating enable
+for_window [app_id="org.telegram.desktop"] floating enable
 
-# make menus and pop-ups floating
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
+### Key bindings
+#
+# Basics:
+#
+    bindsym $mod+Return exec $term
+    bindsym $mod+Shift+q kill
+    bindsym $mod+d exec $menu
+    floating_modifier $mod normal
+    bindsym $mod+Shift+c reload
 
-for_window [class="Pinentry"] floating enable
-for_window [class="Telegram"] floating enable
+#
+# Moving around:
+#
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
 
-# resize window (you can also use the mouse for that)
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+#
+# Workspaces:
+#
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+
+#
+# Layout:
+#
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space focus mode_toggle
+    bindsym $mod+a focus parent
+
+#
+# Scratchpad:
+#
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+
+#
+# Resizing:
+#
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
-# i3bar
-bar {
-	status_command i3status -c ~/.config/i3/i3status.conf
-	tray_output none
-	position top
-	separator_symbol "·"
+#
+# Utilities:
+#
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym Print exec grim
 
-	colors {
-   		background 			#000000
-		focused_workspace  	#000000 #000000 #00A5FF 
-       	active_workspace   	#000000 #000000 #ffffff
-       	inactive_workspace	#000000 #000000 #888888
-       	urgent_workspace   	#2f343a #900000 #ffffff
-	}
+#
+# Status Bar:
+#
+bar {
+    position top
+    status_command while date +'%d/%m/%Y - %H:%M'; do sleep 1; done
+    font pango:DejaVu Sans Mono 14
+
+    colors {
+        background          #000000
+        focused_workspace   #000000 #000000 #00A5FF
+        active_workspace    #000000 #000000 #ffffff
+        inactive_workspace  #000000 #000000 #888888
+        urgent_workspace    #2f343a #900000 #ffffff
+    }
 }
 
 # Session Menu
 set $session " (E)xit | (P)oweroff | (R)eboot | (L)ock "
-mode  $session {
-		 bindsym e exec swaymsg exit
-         bindsym p exec $psst systemctl poweroff; mode "default"
-         bindsym r exec $psst systemctl reboot; mode "default"
-		 bindsym l exec swaylock; mode "default"
-         bindsym q mode "default"
-         bindsym Escape mode "default"
+mode $session {
+    bindsym e exec swaymsg exit
+    bindsym p exec systemctl poweroff; mode "default"
+    bindsym r exec systemctl reboot; mode "default"
+    bindsym l exec swaylock; mode "default"
+    bindsym q mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode $session
 
+include /etc/sway/config.d/*
