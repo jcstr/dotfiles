@@ -1,9 +1,6 @@
-" make Vim more useful
-set nocompatible
+execute pathogen#infect()
 
-execute pathogen#infect() 
-
-filetype plugin on
+filetype plugin indent on
 
 set encoding=utf-8 nobomb
 set ffs=unix,dos,mac
@@ -15,24 +12,17 @@ syntax on
 
 " indentation
 set tabstop=4
-set noet
+set noexpandtab
 set shiftwidth=4
 set autoindent
-set si
-set lbr
-set tw=500
-
-" Linux kernel coding style
-"set tabstop=8
-"set softtabstop=8
-"set shiftwidth=8
-"set noexpandtab
+set smartindent
+set linebreak
+set textwidth=500
 
 set background=dark
 colorscheme goldenrod
 set wildmenu
 set laststatus=2
-set t_Co=256
 set autoread
 
 " open help vertically
@@ -46,13 +36,13 @@ if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
 
-" don’t create backups when editing files in certain directories
-set backupskip=/tmp/*,/private/tmp/*
+" don't create backups when editing files in certain directories
+set backupskip=/tmp/*
 
-" don’t show the intro message when starting Vim
-set shortmess=atI
+" don't show the intro message when starting Vim
+set shortmess+=atI
 
-" show the current mode (already on airline)
+" show the current mode (already on lightline)
 set noshowmode
 
 " enable mouse in all modes
@@ -61,11 +51,14 @@ set mouse=a
 " save with sudo
 command W w !sudo tee % > /dev/null
 
-" Filetypes (PKGBUILD, Go, Git, Python)
-autocmd FileType for PKGBUILD set expandtab shiftwidth=2 softtabstop=4
-autocmd FileType go set noexpandtab
-autocmd Filetype gitcommit setlocal textwidth=72
-autocmd Filetype py set expandtab autoindent tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+" filetypes
+augroup filetypes
+    autocmd!
+    autocmd FileType PKGBUILD setlocal expandtab shiftwidth=2 softtabstop=4
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType gitcommit setlocal textwidth=72
+    autocmd FileType python setlocal expandtab autoindent tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+augroup END
 
 " PKGBUILD
 augroup pkgbuild
@@ -73,10 +66,9 @@ augroup pkgbuild
     autocmd BufRead,BufNewFile PKGBUILD set filetype=PKGBUILD
 augroup END
 
-" vim-go 
+" vim-go
 let g:go_disable_autoinstall = 1
 let g:go_fmt_autosave = 1
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
@@ -96,29 +88,14 @@ let g:lightline = {
 
 " indent guides
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg = red   ctermbg = 3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg = green ctermbg = 4
-
-" committia
-let g:committia_hooks = {}
-function! g:committia_hooks.edit_open(info)
-    " Additional settings
-    setlocal spell
-
-    " If no commit message, start with insert mode
-    if a:info.vcs ==# 'git' && getline(1) ==# ''
-        startinsert
-    end
-
-    " Scroll the diff window from insert mode
-    " Map <C-n> and <C-p>
-    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
-endfunction
+augroup indentguides
+    autocmd!
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+augroup END
 
 " vim-fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gp :Gpush<CR>
-vnoremap <leader>gb :Gblame<CR>
-
+vnoremap <leader>gb :Git blame<CR>
