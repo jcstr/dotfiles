@@ -1,5 +1,3 @@
-export ZSH="/home/jesus/.oh-my-zsh"
-export PATH="$PATH:/home/jesus/.local/bin:/usr/local/bin"
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
@@ -10,51 +8,49 @@ export LC_CTYPE=en_US.UTF-8
 ZSH_THEME="lambda-gitster"
 
 plugins=(
-  git
-  git-extras
   gitfast
-  django
+  git-extras
   virtualenv
   tmux
   history-substring-search
   docker
   docker-compose
-  docker-machine
   zsh-completions
   safe-paste
-  zsh-autosuggestions
   zsh-syntax-highlighting
 )
+
+source /home/jcstr/.oh-my-zsh/oh-my-zsh.sh
+
+if [[ -o interactive && -z "$TMUX" ]]; then
+echo "
+  ░██                          ░██                        ░██
+                               ░██                        ░██
+  ░██  ░███████   ░███████  ░████████ ░██░████      ░████████  ░███████  ░██    ░██
+  ░██ ░██    ░██ ░██           ░██    ░███         ░██    ░██ ░██    ░██ ░██    ░██
+  ░██ ░██         ░███████     ░██    ░██          ░██    ░██ ░█████████  ░██  ░██
+  ░██ ░██    ░██        ░██    ░██    ░██          ░██   ░███ ░██          ░██░██
+  ░██  ░███████   ░███████      ░████ ░██      ░██  ░█████░██  ░███████     ░███
+  ░██
+░███
+"
+fi
 
 ##
 # Dircolors
 #
 
-LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
-export LS_COLORS
-
-CASE_SENSITIVE="false"
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEYPATH="~/.ssh"
+eval "$(dircolors -b)"
 
 # default editor
 export EDITOR=vim
-
-# vagrant 
-export VAGRANT_DISABLE_RESOLV_REPLACE=1
 
 # NPM
 export PREFIX=~/.local
 export NODE_PATH=~/.local/lib/node_modules/
 
 # go
-export GOPATH=$HOME/src/sandbox/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:/usr/lib/go/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/go/bin
 
 ##
 # History
@@ -71,7 +67,6 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
-setopt inc_append_history
 setopt share_history
 
 ##
@@ -109,7 +104,6 @@ zstyle ":completion:*" auto-description "specify: %d"
 zstyle ":completion:*" completer _complete _correct _approximate
 zstyle ":completion:*" format "Completing %d"
 zstyle ":completion:*" group-name ""
-zstyle ":completion:*" menu select=2
 zstyle ":completion:*:default" list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*" list-colors ""
 zstyle ":completion:*" list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -144,19 +138,7 @@ export GPG_TTY
 # Color
 #
 
-# color on man pages
-man() {
-	env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-	LESS_TERMCAP_md=$(printf "\e[1;31m") \
-	LESS_TERMCAP_me=$(printf "\e[0m") \
-	LESS_TERMCAP_se=$(printf "\e[0m") \
-	LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-	LESS_TERMCAP_ue=$(printf "\e[0m") \
-	LESS_TERMCAP_us=$(printf "\e[1;32m") \
-	man "$@"
-}
-
-# color in less
+# color in less and man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -166,12 +148,16 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # color in grep
-alias grep="grep --color=always"
+alias grep="grep --color=auto"
 
-
-###
-# AJA!
+##
+# SSH
 #
 
-source $ZSH/oh-my-zsh.sh
-
+# Start the SSH agent if it is not already running
+#if ! ssh-add -l &>/dev/null; then
+#    echo "Starting SSH agent and adding keys..."
+#    eval "$(ssh-agent -s)" > /dev/null
+    # Add your key(s)
+#    ssh-add ~/.ssh/github
+#fi
